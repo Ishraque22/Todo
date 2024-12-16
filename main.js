@@ -4,22 +4,23 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// In-memory data store
+// in-memory data store
+//Create an array for the todo app task.
 let todos = [];
 
-// Middleware
+// Middleware will handle users' requests.
 app.use(bodyParser.json());
 
-// Routes
+// Routes which will be used 
 app.get('/api/todos', (req, res) => {
   res.json(todos);
 });
 
 app.post('/api/todos', (req, res) => {
   const { text } = req.body;
-  const newTodo = { id: Date.now(), text };
-  todos.push(newTodo);
-  res.json(newTodo);
+  const newtask = { id: Date.now(), text };
+  todos.push(newtask);
+  res.json(newtask);
 });
 
 app.delete('/api/todos/:id', (req, res) => {
